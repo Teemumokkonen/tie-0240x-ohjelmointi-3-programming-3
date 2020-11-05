@@ -33,7 +33,7 @@ void InitGameEngine::gameWindow()
 
     std::shared_ptr<StudentSide::City> cityPtr_ = std::dynamic_pointer_cast<StudentSide::City>(iCityPtr);
     cityPtr_->setBackground(small, big);
-    QImage ryys = cityPtr_->getImage("big");
+    QImage ryys = cityPtr_->getImage("small");
     ui_->setBackground(ryys);
 
 
