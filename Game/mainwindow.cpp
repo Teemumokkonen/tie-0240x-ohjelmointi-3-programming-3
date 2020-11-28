@@ -82,16 +82,22 @@ void mainwindow::addActor(std::shared_ptr<Interface::IActor> actor)
     if(std::shared_ptr<Interface::IVehicle> nActor = std::dynamic_pointer_cast<Interface::IVehicle>(actor)) {
         type = Nysse;
 
+        StudentSide::ActorItem* graphicActor = new StudentSide::ActorItem(location.giveX(), location.giveY(), type);
+        actors_[actor] = graphicActor;
+        map->addItem(graphicActor);
+        last_ = graphicActor;
     }
 
     else if(std::shared_ptr<Interface::IPassenger> nActor = std::dynamic_pointer_cast<Interface::IPassenger>(actor)) {
         type = passenger;
+        if(nActor->isInVehicle() == false) {
+        StudentSide::ActorItem* graphicActor = new StudentSide::ActorItem(location.giveX(), location.giveY(), type);
+        actors_[actor] = graphicActor;
+        map->addItem(graphicActor);
+        last_ = graphicActor;
+        }
     }
 
-    StudentSide::ActorItem* graphicActor = new StudentSide::ActorItem(location.giveX(), location.giveY(), type);
-    actors_[actor] = graphicActor;
-    map->addItem(graphicActor);
-    last_ = graphicActor;
 }
 
 
@@ -125,7 +131,7 @@ void mainwindow::removeActor(std::shared_ptr<Interface::IActor> actor)
     for (it = actors_.begin(); it != actors_.end(); ++it)
         if(it->first == actor){
             map->removeItem(it->second);
-            //qDebug() << "ryyyyyyys";
+
             delete it->second;
             actors_.erase(actor);
         }
