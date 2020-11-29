@@ -19,9 +19,7 @@ Statistics::~Statistics()
 
 void Statistics::morePassengers(int num)
 {
-    if(num > 0) {
     qDebug() << num << " passengers";
-    }
 }
 
 void Statistics::nysseRemoved()
@@ -50,7 +48,5 @@ int Statistics::giveCurrentPoints()
 {
     return points;
 }
-
-
 
 }

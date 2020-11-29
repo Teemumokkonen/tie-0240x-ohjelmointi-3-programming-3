@@ -47,7 +47,9 @@ void GameEngine::updateScreen()
     for(unsigned long int i = 0; i < passengers.size(); i++) {
         ui->addActor(passengers.at(i));
     }
+    if (passengers.size() > 0) {
     stats->morePassengers(passengers.size());
+    }
 }
 
 
@@ -63,7 +65,7 @@ void GameEngine::initLogic()
     cityPtr_->makePlayer();
     graphicPlayer_ = ui->returnPlayer();
     logic_->finalizeGameStart();
-    timer.start(1);
+    timer.start(100);
 }
 
 

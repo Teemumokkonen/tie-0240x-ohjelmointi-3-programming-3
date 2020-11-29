@@ -5,6 +5,7 @@
 #include "interfaces/iactor.hh"
 #include "interfaces/ipassenger.hh"
 #include <memory>
+#include <QMetaType>
 
 const int POINTS_FROM_PASSENGER = 100;
 
@@ -36,4 +37,6 @@ private:
 };
 
 } //namespace
+
+Q_DECLARE_METATYPE(StudentSide::Statistics);
 #endif // STATISTICS_HH
